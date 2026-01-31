@@ -1,3 +1,8 @@
 package edu.narxoz.galactic.task;
 
-public enum TaskState {}
+public enum TaskState {
+    CREATED,
+    ASSIGNED,
+    DONE,
+    FAILED
+}
