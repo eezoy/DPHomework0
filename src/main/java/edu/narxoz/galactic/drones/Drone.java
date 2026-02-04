@@ -1,9 +1,10 @@
 package edu.narxoz.galactic.drones;
 
-public abstract class Drone {
+public abstract class Drone implements FabricDrone {
     private String id;
     private DroneStatus status;
     private double maxPayloadKg;
+    private double speed;
 
     protected Drone(String id, double maxPayloadKg) {
         this.id = id;
@@ -27,7 +28,14 @@ public abstract class Drone {
         return maxPayloadKg;
     }
 
-    public abstract double speedKmPerMin();
+    public double getSpeedKmPerMin() {
+        return speed;
+    }
+
+    @Override
+    public void setSpeedKmPerMin(double speed) {
+        this.speed = speed;
+    }
 
     public void setStatus(DroneStatus status) {
         this.status = status;

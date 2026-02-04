@@ -41,14 +41,14 @@ public class DeliveryTask {
 
     public double estimateTime() {
         if (assignedDrone == null) {
-            throw new IllegalStateException("There are no drones");
+            throw new IllegalStateException("No drone assigned");
         }
 
-        if (assignedDrone.speedKmPerMin() <= 0) {
-            throw new IllegalStateException("Drone's speed is incorrect");
+        if (assignedDrone.getSpeedKmPerMin() <= 0) {
+            throw new IllegalStateException("Drone speed is incorrect");
         }
 
-        return origin.distanceTo(destination) / assignedDrone.speedKmPerMin();
+        return origin.distanceTo(destination) / assignedDrone.getSpeedKmPerMin();
     }
 
     public void setState(TaskState state) {

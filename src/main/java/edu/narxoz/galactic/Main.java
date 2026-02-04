@@ -2,7 +2,9 @@ package edu.narxoz.galactic;
 
 import edu.narxoz.galactic.bodies.*;
 import edu.narxoz.galactic.cargo.Cargo;
-import edu.narxoz.galactic.drones.*;
+import edu.narxoz.galactic.drones.Drone;
+import edu.narxoz.galactic.drones.DroneFactory;
+import edu.narxoz.galactic.drones.DroneType;
 import edu.narxoz.galactic.task.*;
 import edu.narxoz.galactic.dispatcher.*;
 
@@ -11,8 +13,10 @@ public class Main {
         Planet pandora = new Planet("Pandora", 9460800, 12614400, "Toxic");
         SpaceStation ISV = new SpaceStation("Venture Star", 0, 0, 5);
         Cargo cargo = new Cargo(500, "Unobtanium");
-        LightDrone lightDrone = new LightDrone("SA-2 «Samson»", 250);
-        HeavyDrone heavyDrone = new HeavyDrone("C-21 «Dragon»", 1250);
+        Drone lightDrone = DroneFactory.create(DroneType.LIGHT, "SA-2 «Samson»", 250);
+        Drone heavyDrone = DroneFactory.create(DroneType.HEAVY, "C-21 «Dragon»", 1250);
+        lightDrone.setSpeedKmPerMin(10.0);
+        heavyDrone.setSpeedKmPerMin(5.0);
         DeliveryTask task = new DeliveryTask(ISV, pandora, cargo);
         Dispatcher dispatcher = new Dispatcher();
 
